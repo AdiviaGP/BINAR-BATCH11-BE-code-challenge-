@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tambah car</title>
+  </head>
+  <body>
+
+
+      <%= form_for @car do |car| %>
+      <div>
+        <%= car.label :name %>
+        <%= car.text_field :name %>
+      </div>
+      <div>
+        <%= car.label :brand_id %>
+        <%= collection_select( :car, :brand_id, Brand.all , :id, :brandName, {}, { :multiple => false }  ) %>
+      </div>
+      <div>
+        <%= car.label :category_id %>
+        <%= collection_select( :car, :category_id, Category.all , :id, :categoryName, {}, { :multiple => false }  ) %>
+      </div>
+      <div>
+        <%= car.label :description %>
+        <%= car.text_field :description %>
+      </div>
+      <div>
+        <%= car.label :price %>
+        <%= car.text_field :price %>
+      </div>
+      <div>
+        <%= car.label :image %>
+        <%= image_tag(@car.image) %>
+      </div>
+      <div>
+        <%= car.label :stock %>
+        <%= car.text_field :stock %>
+      </div>
+      <div>
+        <%= car.submit %>
+      </div>
+      <% end %>
+
+
+  </body>
+</html>

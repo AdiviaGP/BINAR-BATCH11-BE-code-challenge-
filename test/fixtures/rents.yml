@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_id: 1
+  pickup: MyString
+  dropoff: MyString
+  duration: 1
+  fine: 1
+  cost: 1
+
+two:
+  car_id: 1
+  pickup: MyString
+  dropoff: MyString
+  duration: 1
+  fine: 1
+  cost: 1

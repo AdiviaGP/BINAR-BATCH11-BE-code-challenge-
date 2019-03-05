@@ -1,0 +1,41 @@
+<ul>
+  <li> <%= link_to "Car List", cars_path %></li>
+  <li> <%= link_to "Brand List", brands_path %></li>
+  <li> <%= link_to "Category List", categories_path %></li>
+  <li> <%= link_to "Rental List", rents_path %></li>
+
+</ul>
+
+    <p id=”notice”><%= notice %></p>
+
+    <h1>car List</h1>
+
+    <table width="1000px">
+      <thead>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Category</th>
+        <th>description</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>image</th>
+        <th>Action</th>
+
+      </thead>
+      <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.name %></td>
+        <td><%= car.brand.brandName %></td>
+        <td><%= car.category.categoryName %></td>
+        <td><%= car.description %></td>
+        <td><%= car.stock %></td>
+        <td><%= car.price %></td>
+        <td><%= image_tag(car.image) %></td>
+        <td><%= link_to "Edit", edit_car_path(car) %>
+        <%= link_to "Delete", car, method: :delete, data: { confirm: "Yakin mau di delete ?"} %></td>
+
+      </tr>
+      <% end %>
+      <%= link_to "Tambah car", new_car_path %>
+
+    <table>

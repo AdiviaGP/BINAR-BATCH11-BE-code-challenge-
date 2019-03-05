@@ -1,0 +1,29 @@
+<ul>
+  <li> <%= link_to "Car List", cars_path %></li>
+  <li> <%= link_to "Brand List", brands_path %></li>
+  <li> <%= link_to "Category List", categories_path %></li>
+  <li> <%= link_to "Rental List", rents_path %></li>
+
+</ul>
+
+    <p id=”notice”><%= notice %></p>
+
+    <h1>brand List</h1>
+
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Aksi</th>
+      </thead>
+      <% @brands.each do |brand| %>
+      <tr>
+        <td><%= brand.brandName %></td>
+        <td>
+          <%= link_to "Edit", edit_brand_path(brand) %>
+        </td>
+
+      </tr>
+      <% end %>
+      <%= link_to "Tambah brand", new_brand_path %>
+
+    <table>

@@ -1,0 +1,56 @@
+<ul>
+  <li> <%= link_to "Car List", cars_path %></li>
+  <li> <%= link_to "Brand List", brands_path %></li>
+  <li> <%= link_to "Category List", categories_path %></li>
+  <li> <%= link_to "Rental List", rents_path %></li>
+
+</ul>
+
+    <p id=”notice”><%= notice %></p>
+
+    <h1>rent List</h1>
+
+    <table>
+      <thead>
+        <th>Tenant's Name</th>
+        <th>Car's Name</th>
+        <th>Pick Up</th>
+        <th>Duration</th>
+        <th>Drop Off</th>
+        <th>Denda</th>
+        <th>Biaya Dikenakan</th>
+        <th>Aksi</th>
+      </thead>
+      <% @rents.each do |rent| %>
+      <tr>
+        <td><%= rent.tenantName %></td>
+        <td><%= rent.car.name %></td>
+        <td><%= rent.pickup %></td>
+        <td><%= rent.duration %> Day</td>
+        <td><%= rent.dropoff %></td>
+        <td>Rp.
+          <%
+          start_date = Date.parse "#{rent.pickup}"
+          end_date =  Date.parse "#{rent.dropoff}"
+          tes = (end_date.to_date - start_date.to_date).to_i
+          %>
+          <% if tes > 1 %>
+            <%= @denda = (((end_date.to_date - start_date.to_date).to_i) - 1) * 50000 %>
+          <% else %>
+            <%= 0 %>
+          <% end %>
+
+
+        </td>
+        <td>Rp. <%= (rent.duration * rent.car.price) + @denda %></td>
+
+        <td>
+          <%= link_to "Edit", edit_rent_path(rent) %>
+          <%= link_to "Delete", rent, method: :delete, data: { confirm: "Yakin mau di delete ?"} %>
+        </td>
+
+      </tr>
+      <% end %>
+      <%= link_to "Tambah rent", new_rent_path %>
+
+    <table>

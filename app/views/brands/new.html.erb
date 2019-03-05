@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tambah brand</title>
+  </head>
+  <body>
+    <%= form_for @brand do |brand| %>
+    <div>
+      <%= brand.label :brandName %>
+      <%= brand.text_field :brandName %>
+    </div>
+    <div>
+      <%= brand.submit %>
+    </div>
+    <% end %>
+  </body>
+</html>

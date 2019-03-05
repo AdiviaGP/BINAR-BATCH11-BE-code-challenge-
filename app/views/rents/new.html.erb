@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tambah rent</title>
+  </head>
+  <body>
+    <%= form_for @rent do |rent| %>
+    <div>
+      <%= rent.label :tenantName %>
+      <%= rent.text_field :tenantName %>
+    </div>
+    <div>
+      <%= rent.label :car_id %>
+      <%= collection_select( :rent, :car_id, Car.all , :id, :name, {}, { :multiple => false }  ) %>
+    </div>
+    <div>
+      <%= rent.label :pickup %>
+      <%= rent.date_select :pickup %>
+    </div>
+    <div>
+      <%= rent.label :dropoff %>
+      <%= rent.date_select :dropoff %>
+    </div>
+    <div>
+      <%= rent.label :duration %>
+      <%= rent.text_field :duration %>
+    </div>
+
+    <div>
+      <%= rent.submit %>
+    </div>
+    <% end %>
+  </body>
+</html>
